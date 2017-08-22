@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TodoViewDlg" widgetVar="TodoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="Todo">
+            <h:form id="TodoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{todospresenter.selected != null}">
+                        <h:outputText value="id"/>
+                        <h:outputText value="#{todospresenter.selected.id}" title="id"/>
+                        <h:outputText value="caption"/>
+                        <h:outputText value="#{todospresenter.selected.caption}" title="caption"/>
+                        <h:outputText value="#{bundle.ViewTodoLabel_priority}"/>
+                        <h:outputText value="#{todospresenter.selected.priority}" title="priority"/>
+                        <h:outputText value="description"/>
+                        <h:outputText value="#{todospresenter.selected.description}" title="description"/>
+                        <h:outputText value="done"/>
+                        <p:selectBooleanCheckbox value="#{todospresenter.selected.done}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Close" onclick="TodoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
