@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+	<p:dialog id="SendMessageDlg" widgetVar="SendMessageDialog"
+		modal="true" resizable="false" appendTo="@(body)" header="New Message">
+		<h:form id="SendMessageForm">
+			<h:panelGroup id="display">
+				<p:panelGrid>
+					<p:inputTextarea id="messageText" title="Message Text"
+						value="#{todopresenter.message}" required="true"
+						requiredMessage="The message is required"></p:inputTextarea>
+				</p:panelGrid>
+				<p:commandButton actionListener="#{todopresenter.sendMessage}"
+					value="Send" update="display,:TodoListForm:datalist,:growl"
+					oncomplete="handleSubmit(args,'SendMessageDialog');" />
+				<p:commandButton value="Cancel" onclick="SendMessageDialog.hide()" />
+			</h:panelGroup>
+		</h:form>
+	</p:dialog>
+
+</ui:composition>
+</html>

@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+
+dependencies {
+	compile files('E:/Servers/wildfly-10.1.0.Final/bin/client/jboss-client.jar');
+	compile files('E:/eclipse-workspace/theboringtodoapp/build/libs/theboringtodoapp-all.jar');
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+}
+

@@ -1,0 +1,24 @@
+/*
+ * This is a minimal Gradle script to Java EE application packed in a WAR file
+ */
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'maven'
+
+
+dependencies {
+	compile group: 'org.primefaces', name: 'primefaces', version: '6.1'
+	providedCompile 'javax:javaee-api:7.0'
+	testImplementation 'junit:junit:4.12'
+	compile group: 'org.primefaces.themes', name: 'hot-sneaks', version: '1.0.10'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+artifacts {
+	archives sourcesJar
+}
